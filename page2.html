@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أنيميشن فضائي</title>
+    <link rel="stylesheet" href="style2.css"> <!-- ربط ملف CSS -->
+    <style>
+        .center-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .glow {
+            display: inline-block;
+            padding: 12px 24px; /* تعديل حجم الزر */
+            font-size: 18px; /* تكبير النص داخل الزر */
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50; /* لون خلفية الزر */
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .glow:hover {
+            background-color: #45a049; /* لون عند التمرير فوق الزر */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        #nextButton, #retryButton {
+            display: none; /* إخفاء الأزرار في البداية */
+            margin: 10px; /* إضافة مسافة بين الزرين */
+        }
+
+        .video-container {
+            text-align: center; /* توسيط الفيديو */
+            margin: 20px 0; /* إضافة مساحة حول الفيديو */
+        }
+    </style>
+</head>
+<body>
+    <div class="box-of-star1">
+        <div class="star star-position1"></div>
+        <div class="star star-position2"></div>
+        <div class="star star-position3"></div>
+        <div class="star star-position4"></div>
+        <div class="star star-position5"></div>
+        <div class="star star-position6"></div>
+        <div class="star star-position7"></div>
+    </div>
+
+    <div class="video-container">
+        <video id="myVideo" width="80%" controls>
+            <source src="Jwst.mp4" type="video/mp4"> <!-- ضع هنا مسار الفيديو -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="center-text">
+        <a href="page3.html" class="glow" id="nextButton">Next</a> <!-- الزر الخاص بالانتقال إلى الصفحة الثالثة -->
+        <a href="#" class="glow" id="retryButton" onclick="retryVideo()">Retry</a> <!-- الزر الخاص بإعادة تشغيل الفيديو -->
+    </div>
+
+    <script>
+        const video = document.getElementById('myVideo'); // تأكد من أن هذا هو معرف الفيديو
+        const nextButton = document.getElementById('nextButton'); // تأكد من أن هذا هو معرف الزر
+        const retryButton = document.getElementById('retryButton'); // تأكد من أن هذا هو معرف زر Retry
+
+        // تابع لمعرفة متى ينتهي الفيديو
+        video.onended = function() {
+            video.style.display = 'none'; // إخفاء الفيديو
+            nextButton.style.display = 'inline-block'; // عرض زر "Next"
+            retryButton.style.display = 'inline-block'; // عرض زر "Retry"
+        };
+
+        // إعادة تشغيل الفيديو عند الضغط على زر Retry
+        function retryVideo() {
+            video.currentTime = 0; // إعادة الفيديو للبداية
+            video.play(); // تشغيل الفيديو مرة أخرى
+            video.style.display = 'block'; // إعادة عرض الفيديو
+            nextButton.style.display = 'none'; // إخفاء زر "Next"
+            retryButton.style.display = 'none'; // إخفاء زر "Retry"
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
