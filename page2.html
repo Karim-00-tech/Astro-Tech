@@ -28,14 +28,14 @@
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
         }
 
-        #nextButton, #retryButton {
-            display: none; /* إخفاء الأزرار في البداية */
-            margin: 10px; /* إضافة مسافة بين الزرين */
-        }
-
         .video-container {
             text-align: center; /* توسيط الفيديو */
             margin: 20px 0; /* إضافة مساحة حول الفيديو */
+        }
+
+        .next-container {
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -51,43 +51,11 @@
     </div>
 
     <div class="video-container">
-        <video id="myVideo" width="80%" controls>
-            <source src="https://www.youtube.com/watch?v=rs7JR5GUfqI" type="video/mp4"> <!-- ضع هنا مسار الفيديو -->
-            Your browser does not support the video tag.
-        </video>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rs7JR5GUfqI?si=8pMwHolFJshs1G5y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
-    <div class="center-text">
-        <a href="page3.html" class="glow" id="nextButton">Next</a> <!-- الزر الخاص بالانتقال إلى الصفحة الثالثة -->
-        <a href="#" class="glow" id="retryButton" onclick="retryVideo()">Retry</a> <!-- الزر الخاص بإعادة تشغيل الفيديو -->
+    <div class="next-container">
+        <a href="page3.html" class="glow">Next Page</a>
     </div>
-
-    <script>
-        const video = document.getElementById('myVideo'); // تأكد من أن هذا هو معرف الفيديو
-        const nextButton = document.getElementById('nextButton'); // تأكد من أن هذا هو معرف الزر
-        const retryButton = document.getElementById('retryButton'); // تأكد من أن هذا هو معرف زر Retry
-
-        // تابع لمعرفة متى ينتهي الفيديو
-        video.onended = function() {
-            video.style.display = 'none'; // إخفاء الفيديو
-            nextButton.style.display = 'inline-block'; // عرض زر "Next"
-            retryButton.style.display = 'inline-block'; // عرض زر "Retry"
-        };
-
-        // إعادة تشغيل الفيديو عند الضغط على زر Retry
-        function retryVideo() {
-            video.currentTime = 0; // إعادة الفيديو للبداية
-            video.play(); // تشغيل الفيديو مرة أخرى
-            video.style.display = 'block'; // إعادة عرض الفيديو
-            nextButton.style.display = 'none'; // إخفاء زر "Next"
-            retryButton.style.display = 'none'; // إخفاء زر "Retry"
-        }
-    </script>
 </body>
 </html>
-
-
-
-
-
-
